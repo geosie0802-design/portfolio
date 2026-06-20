@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Geosie Dieuriche NGUEMBO | BUT GEII Calais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050510;
+    --bg2: #111118;
+    --bg3: #18181f;
+    --card: #1c1c25;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #f0f0f5;
+    --text2: #9090a8;
+    --accent: #4f7cff;
+    --accent2: #7c4fff;
+    --accent3: #ff4f7c;
+    --green: #2ec27e;
+    --amber: #f5a623;
+    --teal: #1db89a;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: radial-gradient(circle at top left, #141428 0, #050510 45%, #050510 100%);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,15,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border); padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between; height: 60px;
+  }
+  .nav-logo { font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: 0.04em; font-family: var(--mono); }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--text2); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  section { padding: 7rem 2rem; max-width: 1300px; margin: 0 auto; }
+  #hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding-top: 80px; max-width: 1300px; margin: 0 auto; padding-left: 3rem; padding-right: 3rem;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--accent); }
+  .hero-name { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .hero-name .first { color: var(--text); }
+  .hero-name .last { color: var(--accent); }
+  .hero-title { font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--text2); font-weight: 400; margin-bottom: 2rem; }
+  .hero-desc { max-width: 580px; color: var(--text2); font-size: 1.05rem; line-height: 1.8; margin-bottom: 3rem; border-left: 2px solid var(--accent); padding-left: 1.25rem; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 3rem; }
+  .tag { background: rgba(79,124,255,0.1); border: 1px solid rgba(79,124,255,0.25); color: var(--accent); font-size: 12px; font-family: var(--mono); padding: 5px 12px; border-radius: 4px; letter-spacing: 0.04em; }
+  .tag.green { background: rgba(46,194,126,0.1); border-color: rgba(46,194,126,0.25); color: var(--green); }
+  .tag.amber { background: rgba(245,166,35,0.1); border-color: rgba(245,166,35,0.25); color: var(--amber); }
+  .tag.teal { background: rgba(29,184,154,0.1); border-color: rgba(29,184,154,0.25); color: var(--teal); }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { padding: 12px 28px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; letter-spacing: 0.02em; }
+  .btn-primary { background: var(--accent); color: #fff; border: none; }
+  .btn-primary:hover { background: #3d6ae0; transform: translateY(-2px); }
+  .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border2); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr); gap: 4rem; align-items: center; }
+  .hero-photo {
+    width: 340px; height: 420px; border-radius: 12px; border: 1px solid var(--border2);
+    background: var(--card); display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 12px; color: var(--text2); font-size: 13px;
+    font-family: var(--mono); position: relative; overflow: hidden; margin-left: auto;
+  }
+  .hero-photo::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-eyebrow { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+  .section-title span { color: var(--accent); }
+  .section-line { width: 48px; height: 2px; background: var(--accent); margin-top: 1rem; }
+  #about { padding-top: 5rem; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text p { color: var(--text2); margin-bottom: 1.25rem; line-height: 1.85; font-size: 1.02rem; }
+  .about-text p strong { color: var(--text); font-weight: 600; }
+  .info-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+  .info-card h4 { font-size: 11px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--mono); margin-bottom: 1rem; }
+  .info-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: var(--text2); min-width: 90px; font-size: 13px; }
+  .info-value { color: var(--text); font-weight: 500; }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 1px; background: var(--border2); }
+  .timeline-item { position: relative; padding-bottom: 2.5rem; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot { position: absolute; left: -2.375rem; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); box-shadow: 0 0 0 3px rgba(79,124,255,0.2); }
+  .timeline-dot.green { background: var(--green); box-shadow: 0 0 0 3px rgba(46,194,126,0.2); }
+  .timeline-dot.amber { background: var(--amber); box-shadow: 0 0 0 3px rgba(245,166,35,0.2); }
+  .timeline-dot.teal { background: var(--teal); box-shadow: 0 0 0 3px rgba(29,184,154,0.2); }
+  .timeline-date { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+  .timeline-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+  .timeline-sub { font-size: 13px; color: var(--text2); line-height: 1.6; }
+  .sem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+  .sem-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .sem-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .sem-num { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+  .sem-header h3 { font-size: 16px; font-weight: 600; }
+  .sem-body { padding: 1.5rem; }
+  .matiere-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .matiere-row:last-child { border-bottom: none; }
+  .matiere-name { color: var(--text); font-weight: 500; }
+  .matiere-hours { font-family: var(--mono); font-size: 12px; color: var(--accent); background: rgba(79,124,255,0.08); border: 1px solid rgba(79,124,255,0.15); padding: 2px 8px; border-radius: 4px; }
+  .matiere-hours.green { color: var(--green); background: rgba(46,194,126,0.08); border-color: rgba(46,194,126,0.15); }
+  .comp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+  .comp-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; transition: border-color 0.25s; }
+  .comp-card:hover { border-color: var(--border2); }
+  .comp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .comp-card.c1::before { background: var(--accent); }
+  .comp-card.c2::before { background: var(--green); }
+  .comp-card.c3::before { background: var(--amber); }
+  .comp-card.c4::before { background: var(--accent2); }
+  .comp-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+  .comp-card.c1 .comp-num { color: var(--accent); }
+  .comp-card.c2 .comp-num { color: var(--green); }
+  .comp-card.c3 .comp-num { color: var(--amber); }
+  .comp-card.c4 .comp-num { color: var(--accent2); }
+  .comp-title { font-size: 17px; font-weight: 700; margin-bottom: 0.5rem; }
+  .comp-sub { font-size: 13px; color: var(--text2); line-height: 1.65; margin-bottom: 1rem; }
+  .comp-badge { font-family: var(--mono); font-size: 11px; padding: 3px 10px; border-radius: 4px; display: inline-block; background: rgba(79,124,255,0.1); border: 1px solid rgba(79,124,255,0.2); color: var(--accent); }
+  .comp-badge.green { background: rgba(46,194,126,0.1); border-color: rgba(46,194,126,0.2); color: var(--green); }
+  .comp-badge.amber { background: rgba(245,166,35,0.1); border-color: rgba(245,166,35,0.2); color: var(--amber); }
+  .comp-badge.purple { background: rgba(124,79,255,0.1); border-color: rgba(124,79,255,0.2); color: var(--accent2); }
+  .sae-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 2.5rem; overflow: hidden; transition: border-color 0.25s, transform 0.25s; }
+  .sae-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+  .sae-header { padding: 2rem 2.5rem; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 1.5rem; }
+  .sae-eyebrow { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .sae-eyebrow.green { color: var(--green); }
+  .sae-title { font-size: 1.4rem; font-weight: 700; line-height: 1.25; margin-bottom: 0.6rem; }
+  .sae-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .sae-body { padding: 2rem 2.5rem; }
+  .sae-section { margin-bottom: 2rem; }
+  .sae-section:last-child { margin-bottom: 0; }
+  .sae-section-title { font-family: var(--mono); font-size: 11px; color: var(--text2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .sae-section p { color: var(--text2); font-size: 14px; line-height: 1.8; }
+  .sae-section p strong { color: var(--text); font-weight: 600; }
+  .sae-steps { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .sae-steps li { display: flex; gap: 0.75rem; font-size: 14px; color: var(--text2); line-height: 1.6; }
+  .sae-steps li::before { content: '→'; color: var(--accent); flex-shrink: 0; font-family: var(--mono); margin-top: 1px; }
+  .sae-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+  .sae-mini { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; font-size: 13px; }
+  .sae-mini-label { font-family: var(--mono); font-size: 10px; color: var(--text2); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .sae-mini-value { color: var(--text); font-weight: 500; line-height: 1.5; }
+  .img-placeholder { background: var(--bg3); border: 1px dashed var(--border2); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text2); font-size: 13px; font-family: var(--mono); text-align: center; padding: 2rem; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+  .img-placeholder:hover { border-color: var(--accent); background: rgba(79,124,255,0.04); }
+  .img-placeholder .label { color: var(--accent); font-size: 11px; letter-spacing: 0.06em; }
+  .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  .img-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .skill-group { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+  .skill-group h4 { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; }
+  .skill-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .skill-item:last-child { border-bottom: none; }
+  .skill-name { color: var(--text); font-weight: 500; }
+  .skill-bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .skill-bar { width: 72px; height: 3px; background: var(--border2); border-radius: 2px; overflow: hidden; }
+  .skill-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; }
+  .skill-bar-fill.green { background: var(--green); }
+  .skill-bar-fill.amber { background: var(--amber); }
+  .ppp-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .ppp-left h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; }
+  .ppp-left p { color: var(--text2); font-size: 14px; line-height: 1.8; margin-bottom: 1rem; }
+  .metier-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; }
+  .metier-list li { display: flex; gap: 10px; font-size: 14px; color: var(--text); align-items: center; }
+  .metier-list li::before { content: '◆'; font-size: 8px; color: var(--accent); flex-shrink: 0; }
+  .secteur-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: border-color 0.25s; }
+  .secteur-card:hover { border-color: var(--border2); }
+  .secteur-icon { font-size: 22px; margin-bottom: 0.75rem; }
+  .secteur-name { font-size: 14px; font-weight: 600; margin-bottom: 0.4rem; }
+  .secteur-sub { font-size: 12px; color: var(--text2); line-height: 1.6; }
+  .entreprise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+  .entreprise-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .entreprise-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+  .entreprise-ville { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .entreprise-secteur { font-size: 12px; color: var(--text2); line-height: 1.5; }
+  .bilan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .bilan-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; }
+  .bilan-card h4 { font-family: var(--mono); font-size: 11px; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+  .bilan-card.amber h4 { color: var(--amber); }
+  .bilan-item { display: flex; gap: 10px; font-size: 14px; color: var(--text2); margin-bottom: 0.75rem; line-height: 1.6; }
+  .bilan-item::before { content: '✓'; color: var(--green); flex-shrink: 0; font-weight: 700; }
+  .bilan-card.amber .bilan-item::before { content: '→'; color: var(--amber); }
+  #contact { background: var(--bg2); border-top: 1px solid var(--border); padding: 5rem 2rem; }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .contact-info h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+  .contact-info p { color: var(--text2); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; }
+  .contact-link { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text); font-size: 15px; transition: color 0.2s; }
+  .contact-link:hover { color: var(--accent); }
+  .contact-link-icon { width: 36px; height: 36px; background: var(--card); border: 1px solid var(--border2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .contact-right { padding-top: 3.5rem; }
+  .loisirs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .loisir-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; font-size: 14px; color: var(--text2); }
+  .loisir-icon { font-size: 22px; margin-bottom: 0.5rem; }
+  .loisir-name { color: var(--text); font-weight: 600; font-size: 14px; }
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-family: var(--mono); font-size: 12px; color: var(--text2); }
+  footer span { color: var(--accent); }
+  .section-divider { width: 100%; height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .code-block { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; font-family: var(--mono); font-size: 12px; color: var(--green); line-height: 1.8; overflow-x: auto; margin-top: 1rem; }
+  .code-block .comment { color: var(--text2); }
+  .code-block .keyword { color: var(--accent); }
+  .code-block .value { color: var(--amber); }
+  .cyclev { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-top: 2rem; }
+  .cyclev-title { font-family: var(--mono); font-size: 11px; color: var(--text2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .cyclev-steps { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  .cv-step { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 12px; text-align: center; max-width: 90px; }
+  .cv-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; font-family: var(--mono); flex-shrink: 0; }
+  .cv-dot.blue { background: rgba(79,124,255,0.15); border: 1px solid rgba(79,124,255,0.3); color: var(--accent); }
+  .cv-dot.green { background: rgba(46,194,126,0.15); border: 1px solid rgba(46,194,126,0.3); color: var(--green); }
+  .cv-dot.amber { background: rgba(245,166,35,0.15); border: 1px solid rgba(245,166,35,0.3); color: var(--amber); }
+  .cv-label { color: var(--text2); font-size: 11px; line-height: 1.4; }
+  .cv-arrow { color: var(--border2); font-size: 18px; }
+  .accent-text { color: var(--accent); }
+  .green-text { color: var(--green); }
+  .amber-text { color: var(--amber); }
+  @media (max-width: 768px) {
+    .hero-layout { grid-template-columns: 1fr; }
+    .hero-photo { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .sem-grid { grid-template-columns: 1fr; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .sae-grid { grid-template-columns: 1fr; }
+    .entreprise-grid { grid-template-columns: repeat(2, 1fr); }
+    .ppp-card { grid-template-columns: 1fr; }
+    .bilan-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .img-grid-2 { grid-template-columns: 1fr; }
+    .img-grid-3 { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">GDN<span>.</span>portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#about">Profil</a></li>
+    <li><a href="#formation">Formation</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#sae">Projets SAÉ</a></li>
+    <li><a href="#ppp">Parcours</a></li>
+    <li><a href="#bilan">Bilan</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-layout">
+
+    <!-- Colonne gauche : texte -->
+    <div>
+      <div class="hero-eyebrow">BUT GEII — IUT Littoral Côte d'Opale — Calais</div>
+      <h1 class="hero-name">
+        <span class="first">Geosie Dieuriche<br></span>
+        <span class="last">NGUEMBO</span>
+      </h1>
+      <p class="hero-title">Étudiant en Automatisme & Informatique Industrielle</p>
+      <p class="hero-desc">
+        Futur alternant en BUT GEII, passionné par les systèmes embarqués, la programmation VHDL et les automates industriels. Je cherche une alternance pour mettre en pratique mes compétences acquises en SAÉ et contribuer à des projets industriels concrets.
+      </p>
+      <div class="hero-tags">
+        <span class="tag">VHDL / Vivado</span>
+        <span class="tag">PIC24F / C</span>
+        <span class="tag green">KiCad / PCB</span>
+        <span class="tag green">Python</span>
+        <span class="tag amber">Automatisme</span>
+        <span class="tag amber">FPGA Basys3</span>
+        <span class="tag teal">Anglais A2</span>
+        <span class="tag green">TIA portal</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#sae" class="btn btn-primary">Voir mes projets SAÉ</a>
+        <a href="#contact" class="btn btn-secondary">Me contacter</a>
+      </div>
+    </div>
+
+    <!-- Colonne droite : photo -->
+    <div>
+      <div class="hero-photo">
+        <img src="assets/img/photo_profil.jpg" alt="Geosie Dieuriche NGUEMBO" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+
+  </div><!-- fin hero-layout -->
+</section><!-- fin #hero -->
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+<section id="about" class="reveal">
+  <div class="section-header">
+    <div class="section-eyebrow">01 — Qui suis-je</div>
+    <h2 class="section-title">Présentation <span>personnelle</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Je suis <strong>Geosie Dieuriche NGUEMBO</strong>, étudiant en première année de BUT GEII à l'IUT du Littoral Côte d'Opale de Calais. D'origine congolaise, j'ai suivi une formation en génie informatique industrielle en République du Congo avant de m'installer en France pour poursuivre mes études.</p>
+      <p>Mon parcours m'a conduit vers l'<strong>automatisme et l'informatique industrielle</strong>, un domaine où la programmation, l'électronique et les systèmes de contrôle se rejoignent. Je suis particulièrement attiré par la <strong>programmation de systèmes embarqués</strong>, la conception de cartes électroniques avec KiCad, et la programmation VHDL sur FPGA.</p>
+      <p>Au cours de ma première année de BUT, j'ai réalisé deux SAÉ majeures : la <strong>conception d'un minuteur FPGA</strong> sur carte Basys3 (S1) et un <strong>système de mesure anémométrique</strong> avec PIC24F (S2), deux projets qui m'ont permis de mettre en pratique les compétences Concevoir et Vérifier du référentiel BUT GEII.</p>
+      <p>Je suis à la recherche d'une <strong>alternance</strong> pour les années BUT2 et BUT3, avec l'ambition de rejoindre une entreprise industrielle des Hauts-de-France.</p>
+    </div>
+    <div>
+      <div class="info-card">
+        <h4>Informations personnelles</h4>
+        <div class="info-row"><span class="info-label">Prénom</span><span class="info-value">Geosie Dieuriche</span></div>
+        <div class="info-row"><span class="info-label">Nom</span><span class="info-value">NGUEMBO</span></div>
+        <div class="info-row"><span class="info-label">Âge</span><span class="info-value">24 ans</span></div>
+        <div class="info-row"><span class="info-label">Nationalité</span><span class="info-value">Congolaise</span></div>
+        <div class="info-row"><span class="info-label">Adresse</span><span class="info-value">287 rue Duguay-Trouin, Calais 62100</span></div>
+        <div class="info-row"><span class="info-label">Anglais</span><span class="info-value">Niveau A2</span></div>
+        <div class="info-row"><span class="info-label">Email</span><span class="info-value">geosie-dieurich.nguembo@etu.univ-littoral.fr</span></div>
+      </div>
+      <div class="info-card">
+        <h4>Formation actuelle</h4>
+        <div class="info-row"><span class="info-label">Diplôme</span><span class="info-value">BUT GEII — Promotion 2025–2028</span></div>
+        <div class="info-row"><span class="info-label">IUT</span><span class="info-value">IUT Littoral Côte d'Opale</span></div>
+        <div class="info-row"><span class="info-label">Parcours</span><span class="info-value">AII — Automatisme & Info. Industrielle</span></div>
+        <div class="info-row"><span class="info-label">Objectif</span><span class="info-value">Alternance BUT2 & BUT3</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     FORMATION
+══════════════════════════════════════════ -->
+<section id="formation" class="reveal">
+  <div class="section-header">
+    <div class="section-eyebrow">02 — Parcours scolaire</div>
+    <h2 class="section-title">Formation & <span>programme</span></h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; margin-bottom:4rem;">
+    <div>
+      <p style="font-family:var(--mono); font-size:11px; color:var(--text2); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.5rem;">Parcours académique</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2025 — 2028</div>
+          <div class="timeline-title">BUT GEII — Génie Électrique et Informatique Industrielle</div>
+          <div class="timeline-sub">IUT du Littoral Côte d'Opale, Calais<br>Parcours AII (Automatisme & Informatique Industrielle)</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot amber"></div>
+          <div class="timeline-date">2022 — 2025</div>
+          <div class="timeline-title">Licence en Génie Informatique Industrielle</div>
+          <div class="timeline-sub">Institut Supérieur de Technologie et de Commerce, Pointe-Noire (Rép. Congo)</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot green"></div>
+          <div class="timeline-date">2020 — 2021</div>
+          <div class="timeline-title">Baccalauréat Technique Série F1</div>
+          <div class="timeline-sub">Construction et fabrication mécanique<br>Lycée Technique Poaty-Bernard, Pointe-Noire (Rép. Congo)</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p style="font-family:var(--mono); font-size:11px; color:var(--text2); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.5rem;">Expériences professionnelles</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot teal"></div>
+          <div class="timeline-date">Sept — Déc 2024</div>
+          <div class="timeline-title">Technicien en Sécurité Informatique (Stage)</div>
+          <div class="timeline-sub">K-chimie, République du Congo<br>Surveillance des systèmes, protocoles de sauvegarde et protection des données</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot amber"></div>
+          <div class="timeline-date">Mars — Août 2023</div>
+          <div class="timeline-title">Agent de Sécurité / Surveillance (CDD)</div>
+          <div class="timeline-sub">Restaurant Le Derrick, Rép. Congo<br>Gestion des situations à risque, collaboration avec la hiérarchie</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot green"></div>
+          <div class="timeline-date">Juil — Sept 2022</div>
+          <div class="timeline-title">Agent Rayon Supermarché (CDD)</div>
+          <div class="timeline-sub">Casino, République du Congo<br>Gestion des stocks et classement des produits</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-bottom:2rem;">
+    <div class="section-eyebrow">Programme officiel 2025–2026</div>
+    <h3 style="font-size:1.3rem; font-weight:600;">Volumes horaires <span class="accent-text">BUT1</span></h3>
+  </div>
+
+  <div class="sem-grid">
+    <div class="sem-card">
+      <div class="sem-header">
+        <div><div class="sem-num">Semestre 1</div><h3>S1 — Tronc commun</h3></div>
+      </div>
+      <div class="sem-body">
+        <div class="matiere-row"><span class="matiere-name">Électronique</span><span class="matiere-hours">60h (dont 27h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Énergie / Électrotechnique</span><span class="matiere-hours">60h (dont 30h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Informatique</span><span class="matiere-hours">45h (dont 30h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Automatisme</span><span class="matiere-hours">40h (dont 20h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Maths & Logiciels</span><span class="matiere-hours">51h (dont 17h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">PPP</span><span class="matiere-hours">20h (dont 17h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Culture & Communication</span><span class="matiere-hours">28h (dont 22h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Anglais</span><span class="matiere-hours">28h (dont 14h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Physique appliquée (Métrologie)</span><span class="matiere-hours">14h (dont 4h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Intégration à l'université</span><span class="matiere-hours">15h (dont 6h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Vie de l'entreprise</span><span class="matiere-hours">6h</span></div>
+        <div class="matiere-row" style="border-top:1px solid var(--border2); margin-top:8px; padding-top:12px;">
+          <span class="matiere-name" style="font-weight:700; color:var(--accent)">SAÉ 1.01</span>
+          <span class="matiere-hours green">60h encadrées</span>
+        </div>
+      </div>
+    </div>
+    <div class="sem-card">
+      <div class="sem-header">
+        <div><div class="sem-num">Semestre 2</div><h3>S2 — Tronc commun</h3></div>
+      </div>
+      <div class="sem-body">
+        <div class="matiere-row"><span class="matiere-name">Électronique</span><span class="matiere-hours">60h (dont 30h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Énergie / Électrotechnique</span><span class="matiere-hours">60h (dont 30h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Informatique embarquée</span><span class="matiere-hours">45h (dont 30h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Automatisme</span><span class="matiere-hours">40h (dont 20h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Maths & Logiciels</span><span class="matiere-hours">51h (dont 17h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">PPP</span><span class="matiere-hours">15h (dont 12h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Culture & Communication</span><span class="matiere-hours">28h (dont 22h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Anglais</span><span class="matiere-hours">28h (dont 14h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Physique appliquée (Capteurs)</span><span class="matiere-hours">24h (dont 8h TP)</span></div>
+        <div class="matiere-row"><span class="matiere-name">Vie de l'entreprise</span><span class="matiere-hours">15h</span></div>
+        <div class="matiere-row" style="border-top:1px solid var(--border2); margin-top:8px; padding-top:12px;">
+          <span class="matiere-name" style="font-weight:700; color:var(--green)">SAÉ 2.01</span>
+          <span class="matiere-hours green">70h encadrées</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     COMPÉTENCES
+══════════════════════════════════════════ -->
+<section id="competences" class="reveal">
+  <div class="section-header">
+    <div class="section-eyebrow">03 — Référentiel BUT GEII</div>
+    <h2 class="section-title">Compétences <span>acquises</span></h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="comp-grid" style="margin-bottom:3rem;">
+    <div class="comp-card c1">
+      <div class="comp-num">C1 — Compétence clé</div>
+      <div class="comp-title">Concevoir</div>
+      <p class="comp-sub">Concevoir la partie GEII d'un système. Branche descendante du cycle en V : analyse des besoins, spécification, architecture, réalisation.</p>
+      <span class="comp-badge">SAÉ 1.01 · SAÉ 2.01</span>
+    </div>
+    <div class="comp-card c2">
+      <div class="comp-num">C2 — Compétence clé</div>
+      <div class="comp-title">Vérifier</div>
+      <p class="comp-sub">Vérifier la partie GEII d'un système. Branche ascendante du cycle en V : tests, mesures, validation, compte-rendu des dysfonctionnements.</p>
+      <span class="comp-badge green">SAÉ 1.02 · SAÉ 2.01</span>
+    </div>
+    <div class="comp-card c3">
+      <div class="comp-num">C3 — Compétence transverse</div>
+      <div class="comp-title">Maintenir</div>
+      <p class="comp-sub">Assurer le maintien en condition opérationnelle d'un système. Diagnostic de pannes, correction, retour au fonctionnement nominal.</p>
+      <span class="comp-badge amber">Travaillée dès BUT1</span>
+    </div>
+    <div class="comp-card c4">
+      <div class="comp-num">C4 — Parcours AII</div>
+      <div class="comp-title">Intégrer</div>
+      <p class="comp-sub">Intégrer un système de commande et de contrôle dans un procédé industriel. Automates, supervision, IHM, réseaux industriels.</p>
+      <span class="comp-badge purple">BUT2 & BUT3</span>
+    </div>
+  </div>
+
+  <div class="cyclev">
+    <div class="cyclev-title">Lien avec le Cycle en V de l'ingénierie système</div>
+    <div class="cyclev-steps">
+      <div class="cv-step"><div class="cv-dot blue">C1</div><span class="cv-label">Analyse<br>des besoins</span></div>
+      <div class="cv-arrow">→</div>
+      <div class="cv-step"><div class="cv-dot blue">C1</div><span class="cv-label">Spécification<br>fonctionnelle</span></div>
+      <div class="cv-arrow">→</div>
+      <div class="cv-step"><div class="cv-dot blue">C1</div><span class="cv-label">Conception<br>architecture</span></div>
+      <div class="cv-arrow">→</div>
+      <div class="cv-step"><div class="cv-dot amber">C4</div><span class="cv-label">Réalisation<br>prototype</span></div>
+      <div class="cv-arrow">→</div>
+      <div class="cv-step"><div class="cv-dot green">C2</div><span class="cv-label">Tests<br>unitaires</span></div>
+      <div class="cv-arrow">→</div>
+      <div class="cv-step"><div class="cv-dot green">C2</div><span class="cv-label">Validation<br>système</span></div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top:3.5rem; margin-bottom:2rem;">
+    <h3 style="font-size:1.2rem; font-weight:600;">Compétences <span class="accent-text">techniques</span></h3>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>Programmation</h4>
+      <div class="skill-item"><span class="skill-name">VHDL (Vivado)</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div></div>
+      <div class="skill-item"><span class="skill-name">C (MPLAB)</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div></div></div>
+      <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill green" style="width:60%"></div></div></div></div>
+      <div class="skill-item"><span class="skill-name">Lecture Grafcet</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill amber" style="width:65%"></div></div></div></div>
+    </div>
+    <div class="skill-group">
+      <h4>Outils & Logiciels</h4>
+      <div class="skill-item"><span class="skill-name">KiCad (PCB)</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div></div></div>
+      <div class="skill-item"><span class="skill-name">Vivado (FPGA)</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div></div></div>
+      <div class="skill-item"><span class="skill-name">LTspice (AOP)</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill green" style="width:60%"></div></div></div></div>
+      <div class="skill-item"><span class="skill-name">TIA Portal</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill green" style="width:60%"></div></div></div></div>
+      <div class="skill-item"><span class="skill-name">Câblage industriel</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill amber" style="width:55%"></div></div></div></div>
+    </div>
+    <div class="skill-group">
+      <h4>Instruments de mesure</h4>
+      <div class="skill-item"><span class="skill-name">Multimètre</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill green" style="width:80%"></div></div></div></div>
+      <div class="skill-item"><span class="skill-name">Oscilloscope</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill green" style="width:70%"></div></div></div></div>
+      <div class="skill-item"><span class="skill-name">Alimentation lab.</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div></div>
+      <div class="skill-item"><span class="skill-name">GBF / Générateur</span><div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-bar-fill amber" style="width:60%"></div></div></div></div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top:3rem; margin-bottom:2rem;">
+    <h3 style="font-size:1.2rem; font-weight:600;">Savoir-être & compétences <span class="green-text">humaines</span></h3>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1rem;">
+    <div class="info-card" style="text-align:center;"><div style="font-size:2rem; margin-bottom:0.5rem;">🎯</div><div style="font-weight:600; font-size:14px; margin-bottom:0.25rem;">Rigueur</div><div style="font-size:12px; color:var(--text2)">Respect des consignes de sécurité, organisation du poste de travail</div></div>
+    <div class="info-card" style="text-align:center;"><div style="font-size:2rem; margin-bottom:0.5rem;">🤝</div><div style="font-weight:600; font-size:14px; margin-bottom:0.25rem;">Travail en équipe</div><div style="font-size:12px; color:var(--text2)">Répartition des tâches, communication, binôme en SAÉ</div></div>
+    <div class="info-card" style="text-align:center;"><div style="font-size:2rem; margin-bottom:0.5rem;">💡</div><div style="font-weight:600; font-size:14px; margin-bottom:0.25rem;">Autonomie</div><div style="font-size:12px; color:var(--text2)">Résolution de problèmes, apprentissage des outils par soi-même</div></div>
+    <div class="info-card" style="text-align:center;"><div style="font-size:2rem; margin-bottom:0.5rem;">🔄</div><div style="font-weight:600; font-size:14px; margin-bottom:0.25rem;">Persévérance</div><div style="font-size:12px; color:var(--text2)">Correction des erreurs, itérations jusqu'au prototype fonctionnel</div></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     SAÉ — PROJETS
+══════════════════════════════════════════ -->
+<section id="sae" class="reveal">
+  <div class="section-header">
+    <div class="section-eyebrow">04 — Situations d'Apprentissage et d'Évaluation</div>
+    <h2 class="section-title">Projets <span>SAÉ</span></h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- SAÉ 1.01 -->
+  <div class="sae-card">
+    <div class="sae-header">
+      <div>
+        <div class="sae-eyebrow">SAÉ 1.01 — Semestre 1 — Compétence C1 : Concevoir</div>
+        <div class="sae-title">Réalisation et conception<br>d'un minuteur FPGA</div>
+        <div class="sae-meta">
+          <span class="tag">VHDL</span><span class="tag">KiCad</span>
+          <span class="tag green">FPGA Basys3</span><span class="tag green">Artix-7</span>
+          <span class="tag amber">Vivado</span><span class="tag amber">Janvier 2026</span>
+        </div>
+      </div>
+      <div style="text-align:right; flex-shrink:0;">
+        <div style="font-family:var(--mono); font-size:11px; color:var(--text2); margin-bottom:4px;">Durée</div>
+        <div style="font-size:1.5rem; font-weight:700; color:var(--accent)">5 sem.</div>
+        <div style="font-family:var(--mono); font-size:11px; color:var(--text2); margin-top:8px; margin-bottom:4px;">Binôme</div>
+        <div style="font-size:13px; color:var(--text)">AGBATI Romuald</div>
+      </div>
+    </div>
+    <div class="sae-body">
+      <div class="sae-section">
+        <div class="sae-section-title">Contexte & cahier des charges</div>
+        <p>Dans le cadre de la SAÉ du semestre 1, nous avons reçu pour mission de <strong>concevoir et réaliser un minuteur électronique</strong> destiné à la cuisson des œufs, implanté sur une carte FPGA Basys3. Le cahier des charges imposait : une sélection du temps par boutons poussoirs, un affichage visuel du temps restant par un arc de 11 LEDs (6 rouges + 5 vertes), un temps initial de 3 minutes, un ajout de temps par pas de 15 secondes, et un clignotement des LEDs avec buzzer en fin de cycle.</p>
+      </div>
+      <div class="sae-grid">
+        <div class="sae-mini"><div class="sae-mini-label">Matériel principal</div><div class="sae-mini-value">Carte Basys3<br>FPGA Artix-7 xc7a35t</div></div>
+        <div class="sae-mini"><div class="sae-mini-label">Logiciels utilisés</div><div class="sae-mini-value">Vivado (VHDL)<br>KiCad (PCB)</div></div>
+        <div class="sae-mini"><div class="sae-mini-label">Livrable final</div><div class="sae-mini-value">Prototype fonctionnel<br>+ Dossier de conception</div></div>
+      </div>
+      <div class="sae-section" style="margin-top:1.5rem;">
+        <div class="sae-section-title">Réalisations (photos du projet)</div>
+        <!-- Ligne 1 : 2 grandes photos -->
+        <div class="img-grid-2" style="margin-top:1rem;">
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_01.jpg" alt="Carte PCB finale face avant" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:6px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">① Carte finale face avant — PCB fabriqué avec LEDs rouges/vertes et buzzer</p></div>
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_02.png" alt="Carte Basys3 + PCB externe" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:6px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">② Carte FPGA Basys3 avec PCB externe connecté via les ports JB et JC</p></div>
+        </div>
+        <!-- Ligne 2 : 3 photos plus petites -->
+        <div class="img-grid-3" style="margin-top:1rem;">
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_03.jpg" alt="Schéma électrique KiCad" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:6px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">③ Schéma électrique complet sous KiCad — résistances, LEDs, buzzer, connecteurs JB/JC</p></div>
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_04.png" alt="Routage PCB KiCad" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:6px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">④ Routage du circuit imprimé PCB sous KiCad — pistes cuivre, placement composants</p></div>
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_05.png" alt="Simulation VHDL chronogramme Vivado" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:6px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">⑤ Chronogramme de simulation VHDL sous Vivado — vérification des modules logiques</p></div>
+        </div>
+      </div>
+      <div class="sae-section" style="margin-top:1.5rem;">
+        <div class="sae-section-title">Vidéo de démonstration — LEDs & carte Basys3</div>
+        <div style="max-width:480px; margin:0 auto;">
+          <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border2); background:#000; aspect-ratio:1/1;">
+            <video controls style="width:100%; height:100%; object-fit:contain; display:block;" preload="metadata">
+              <source src="assets/video/video_01.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la lecture vidéo.
+            </video>
+          </div>
+          <p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; margin-top:8px; line-height:1.5;">🎬 Démonstration du minuteur FPGA — affichage progressif des 11 LEDs, buzzer et clignotement en fin de décompte sur carte Basys3</p>
+        </div>
+      </div>
+      <div class="sae-section" style="margin-top:1.5rem;">
+        <div class="sae-section-title">Documents officiels — SAÉ 1.01</div>
+        <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); margin-bottom:1rem;"><div style="background:var(--bg); padding:10px 12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;"><span style="font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.06em;">📄 Dossier de fabrication — SAÉ 1.01 Minuteur FPGA</span><a href="assets/pdf/dossier_fabrication_sae1.pdf" download="dossier_fabrication_SAE1_NGUEMBO.pdf" style="font-family:var(--mono); font-size:10px; color:var(--green); text-decoration:none; border:1px solid var(--green); padding:3px 8px; border-radius:4px;">⬇ Télécharger</a></div><iframe src="assets/pdf/dossier_fabrication_sae1.pdf" style="width:100%; height:480px; border:none; display:block;" title="Dossier de fabrication — SAÉ 1.01 Minuteur FPGA"></iframe><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:7px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">Dossier complet de la SAÉ 1 : cahier des charges, planification, conception, tests, problèmes et bilan — NGUEMBO & AGBATI (BUT1-GEII-SAE1, Janvier 2026)</p></div>
+        <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); margin-bottom:1rem;"><div style="background:var(--bg); padding:10px 12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;"><span style="font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.06em;">📄 Compte rendu argumenté des compétences — BUT1 2025-2026</span><a href="assets/pdf/compte_rendu_competences.pdf" download="compte_rendu_competences_NGUEMBO.pdf" style="font-family:var(--mono); font-size:10px; color:var(--green); text-decoration:none; border:1px solid var(--green); padding:3px 8px; border-radius:4px;">⬇ Télécharger</a></div><iframe src="assets/pdf/compte_rendu_competences.pdf" style="width:100%; height:480px; border:none; display:block;" title="Compte rendu argumenté des compétences — BUT1 2025-2026"></iframe><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:7px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">Compte rendu des compétences acquises en BUT1 GEII : savoirs (loi d'Ohm, composants, VHDL), savoir-faire (montages, mesures, simulation) et savoir-être — NGUEMBO Geosie Dieuriche</p></div>
+      </div>
+      <div class="sae-section">
+        <div class="sae-section-title">Compétence C1 — Concevoir : ce que j'ai réalisé</div>
+        <ul class="sae-steps">
+          <li>Analyse du cahier des charges : identification des besoins fonctionnels (LEDs, boutons, buzzer, temporisation)</li>
+          <li>Conception d'une <strong>architecture modulaire en VHDL</strong> : module horloge (diviseur 100MHz→1Hz), module anti-rebond, machine à états (SETUP / RUNNING / ALARM), module LEDs, module buzzer</li>
+          <li>Réalisation du schéma électrique complet sous <strong>KiCad</strong> : résistances de protection, connecteurs JB/JC, alimentation 3,3V</li>
+          <li>Routage du circuit imprimé (PCB) : placement des composants, tracé des pistes, génération des fichiers de fabrication</li>
+          <li>Fabrication physique de la carte : gravure chimique, perçage, soudure des composants</li>
+          <li>Rédaction du <strong>dossier de fabrication</strong> complet (planning des tâches, analyse fonctionnelle, liste des composants)</li>
+        </ul>
+      </div>
+      <div class="sae-section">
+        <div class="sae-section-title">Compétence C2 — Vérifier : tests réalisés</div>
+        <ul class="sae-steps">
+          <li>Tests en simulation Vivado : vérification des chronogrammes pour chaque module VHDL (horloge, boutons, FSM)</li>
+          <li>Test des boutons physiques après programmation de la Basys3 : vérification de l'anti-rebond</li>
+          <li>Vérification de l'affichage progressif des 11 LEDs en fonction du temps restant</li>
+          <li>Vérification du déclenchement du buzzer et du clignotement en fin de décompte</li>
+          <li>Diagnostic et correction de 4 problèmes identifiés : mauvais diviseur d'horloge, rebonds mécaniques, conflits de signaux LEDs, erreurs dans le fichier de contraintes XDC</li>
+          <li>Vérification de la carte électronique au multimètre : continuité, polarité des LEDs, connexions JB/JC</li>
+        </ul>
+      </div>
+      <div class="sae-section">
+        <div class="sae-section-title">Code VHDL — extrait module buzzer</div>
+        <div class="code-block">
+<span class="comment">-- Module E_buzzer : génération du signal sonore en fin de minuteur</span>
+<span class="keyword">entity</span> E_buzzer <span class="keyword">is</span>
+  Generic(
+    PWM_FREQ_HZ  : integer := <span class="value">2000</span>;
+    CLK_FREQ_HZ  : integer := <span class="value">100_000_000</span>;
+    BLINK_FREQ_HZ: integer := <span class="value">1</span>
+  );
+  Port (
+    CLK100MHZ    : <span class="keyword">in</span>  STD_LOGIC;
+    RESET        : <span class="keyword">in</span>  STD_LOGIC;
+    enable_alarm : <span class="keyword">in</span>  STD_LOGIC;
+    BUZZER       : <span class="keyword">out</span> STD_LOGIC;
+    blink_signal : <span class="keyword">out</span> STD_LOGIC
+  );
+<span class="keyword">end</span> E_buzzer;
+        </div>
+      </div>
+      <div class="sae-section">
+        <div class="sae-section-title">Bilan personnel — SAÉ 1.01</div>
+        <p>Ce projet m'a permis de maîtriser la <strong>programmation VHDL modulaire</strong> sur FPGA et de comprendre toute la chaîne de conception électronique, de la spécification à la fabrication physique. J'ai développé ma rigueur dans la gestion de projet (planning Gantt sur 5 semaines) et ma persévérance face aux difficultés techniques rencontrées. La réalisation d'une <strong>carte PCB fonctionnelle fabriquée à l'IUT</strong> a été une grande fierté.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAÉ 2.01 -->
+  <div class="sae-card">
+    <div class="sae-header">
+      <div>
+        <div class="sae-eyebrow green">SAÉ 2.01 — Semestre 2 — Compétences C1 + C2 : Concevoir & Vérifier</div>
+        <div class="sae-title">Système de mesure anémométrique<br>et commande de volet roulant</div>
+        <div class="sae-meta">
+          <span class="tag">PIC24FJ128GA010</span><span class="tag">C embarqué (MPLAB)</span>
+          <span class="tag green">SEN0170</span><span class="tag green">CAN 10 bits</span>
+          <span class="tag amber">TIA Portal</span><span class="tag amber">Automatisme</span>
+          <span class="tag teal">QElectroTech</span>
+        </div>
+      </div>
+      <div style="text-align:right; flex-shrink:0;">
+        <div style="font-family:var(--mono); font-size:11px; color:var(--text2); margin-bottom:4px;">Durée</div>
+        <div style="font-size:1.2rem; font-weight:700; color:var(--green)">4 semaines</div>
+        <div style="font-family:var(--mono); font-size:11px; color:var(--text2); margin-top:8px; margin-bottom:4px;">Binôme</div>
+        <div style="font-size:13px; color:var(--text)">Saad ELKHAOULANI</div>
+      </div>
+    </div>
+    <div class="sae-body">
+      <div class="sae-section">
+        <div class="sae-section-title">Contexte & objectif</div>
+        <p>L'objectif de cette SAÉ était de <strong>réaliser un système de mesure anémométrique</strong> permettant de piloter un <strong>volet roulant</strong> en fonction de la vitesse du vent. Le capteur anémomètre <strong>SEN0170</strong> fournit une tension entre 0 et 5 V (0 à 30 m/s) lue par le <strong>PIC24FJ128GA010</strong> via son convertisseur analogique-numérique (CAN). Le microcontrôleur calcule la vitesse du vent, l'affiche sur un écran LCD, puis envoie les ordres de montée (M) et descente (D) vers un <strong>automate programmable industriel</strong> (API) qui commande le volet roulant.</p>
+      </div>
+      <div class="sae-grid">
+        <div class="sae-mini"><div class="sae-mini-label">Microcontrôleur & IDE</div><div class="sae-mini-value">PIC24FJ128GA010<br>Programmation en C avec MPLAB</div></div>
+        <div class="sae-mini"><div class="sae-mini-label">Automatisme</div><div class="sae-mini-value">API programmé sous<br>TIA Portal (Grafcet / Ladder)</div></div>
+        <div class="sae-mini"><div class="sae-mini-label">Schéma & câblage</div><div class="sae-mini-value">Schéma de câblage réalisé<br>sous QElectroTech</div></div>
+      </div>
+      <div class="sae-section" style="margin-top:1.5rem;">
+        <div class="sae-section-title">Réalisations (photos du projet)</div>
+        <!-- Ligne 1 : 2 photos -->
+        <div class="img-grid-2" style="margin-top:1rem;">
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_06.jpg" alt="Banc de test anémomètre SEN0170" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:6px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">① Banc de test — anémomètre SEN0170 avec ventilateur, affichage LCD de la tension de sortie</p></div>
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_07.jpg" alt="Carte Explorer 16 PIC24F LCD vitesse vent" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:6px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">② Carte Explorer 16 avec PIC24FJ128GA010 — LCD affichant Vitesse vent : 3 m/s</p></div>
+        </div>
+        <!-- Ligne 2 : 2 photos -->
+        <div class="img-grid-2" style="margin-top:1rem;">
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_08.jpg" alt="Schéma pont diviseur manuscrit" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:6px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">③ Schéma manuscrit du pont diviseur (R1/R2) — adaptation 0–5V capteur → 0–3,3V entrée CAN PIC24F</p></div>
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_09.jpg" alt="Maquette volet roulant câblée API Siemens" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:6px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">④ Maquette volet roulant câblée — API S7-1200, contacteurs KM1/KM2/KM3, bouton AUTO/MANU</p></div>
+        </div>
+        <!-- Ligne 3 : 2 photos -->
+        <div class="img-grid-2" style="margin-top:1rem;">
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_10.jpg" alt="Schéma câblage TIA Portal CPU 1214C" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:6px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">⑤ Schéma de câblage TIA Portal — CPU 1214C DC/DC/DC, entrées 24VDC et analogiques</p></div>
+          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_11.jpg" alt="Code C MPLAB X PIC24F lecture CAN" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:6px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">⑥ Code C sous MPLAB X — lecture CAN 10 bits, seuils Vmax1/Vmax2, gestion commandes M/D</p></div>
+        </div>
+      </div>
+      <div class="sae-section">
+        <div class="sae-section-title">Compétence C1 — Concevoir : partie mesure & commande</div>
+        <ul class="sae-steps">
+          <li>Analyse du besoin : protection du volet roulant en fonction de la vitesse du vent (vent fort / vent faible).</li>
+          <li>Dimensionnement du <strong>pont diviseur de tension</strong> entre le capteur (0–5 V) et l'entrée CAN (0–3,3 V) du PIC24F.</li>
+          <li>Réalisation du <strong>schéma de câblage</strong> complet du volet roulant sous QElectroTech : moteur, contacteurs, boutons manuel/automatique, API, alimentation.</li>
+          <li>Programmation en <strong>C embarqué sous MPLAB</strong> : lecture de la tension via le CAN 10 bits, conversion en vitesse (m/s), gestion des seuils V1 et V2.</li>
+          <li>Programmation de l'<strong>API sous TIA Portal</strong> : élaboration du Grafcet / Ladder pour piloter la montée (M) et la descente (D) du volet.</li>
+          <li>Montage et câblage de la maquette : raccordement du moteur, des boutons de commande, de l'API et du module de puissance selon le schéma réalisé.</li>
+        </ul>
+      </div>
+      <div class="sae-section">
+        <div class="sae-section-title">Compétence C2 — Vérifier : tests, simulations & dépannage</div>
+        <ul class="sae-steps">
+          <li>Simulation du programme API dans <strong>TIA Portal</strong> pour vérifier les transitions d'états (montée, arrêt, descente) avant implantation sur la maquette.</li>
+          <li>Tests du code C sous <strong>MPLAB</strong> : vérification des valeurs lues par le CAN, de la conversion tension → vitesse et du bon déclenchement des seuils.</li>
+          <li>Tests de continuité au <strong>multimètre</strong> sur la maquette pour vérifier le câblage du moteur, des contacteurs et des boutons.</li>
+          <li>Identification d'un <strong>mauvais câblage du moteur KM1</strong> qui empêchait le fonctionnement automatique du volet (seul le mode manuel marchait).</li>
+          <li>Correction du câblage en se référant au schéma QElectroTech : repositionnement des fils sur les bons borniers et contacts auxiliaires.</li>
+          <li>Validation finale : fonctionnement correct du volet en modes manuel et automatique, avec ouverture/fermeture en fonction de la vitesse du vent mesurée.</li>
+        </ul>
+      </div>
+      <div class="sae-section">
+        <div class="sae-section-title">Vidéo de démonstration du volet roulant</div>
+        <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border2); background:#000; aspect-ratio:1/1; max-width:480px; margin:0 auto;"><video controls style="width:100%; height:100%; object-fit:contain; display:block;" preload="metadata"><source src="assets/video/video_02.mp4" type="video/mp4">Votre navigateur ne supporte pas la lecture vidéo.</video></div><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; margin-top:8px; line-height:1.5;">🎬 Démonstration du volet roulant — capteur SEN0170 → PIC24F → API S7-1200 → moteur (modes manuel & automatique)</p>
+      </div>
+      <div class="sae-section">
+        <div class="sae-section-title">Bilan personnel — SAÉ 2.01</div>
+        <p>Cette SAÉ m'a permis de relier l'<strong>informatique embarquée</strong> (PIC24F + MPLAB), l'<strong>automatisme</strong> (API sous TIA Portal) et le <strong>câblage industriel réel</strong> d'un volet roulant. J'ai renforcé ma compréhension de la chaîne complète <strong>capteur → traitement → actionneur</strong> et j'ai progressé en recherche de pannes (câblage KM1, tests de continuité, utilisation du schéma QElectroTech). Ce projet illustre concrètement les compétences <strong>Concevoir (C1)</strong> et <strong>Vérifier (C2)</strong> du BUT GEII.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top:3rem; margin-bottom:2rem;">
+    <h3 style="font-size:1.2rem; font-weight:600;">Travaux pratiques <span class="accent-text">marquants</span></h3>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+    <div class="info-card"><h4>Loi d'Ohm & mesures en TP</h4><p style="font-size:13px; color:var(--text2); line-height:1.7;">Application de la loi d'Ohm (U = R × I), lois des mailles et des nœuds. Dimensionnement de résistances, mesures au multimètre, comparaison valeurs théoriques / expérimentales. Utilisation de l'oscilloscope pour analyser des signaux analogiques et numériques.</p></div>
+    <div class="info-card"><h4>Composants électroniques</h4><p style="font-size:13px; color:var(--text2); line-height:1.7;">Identification et caractérisation de résistances, condensateurs, diodes et transistors. Lecture des datasheets, mesures de caractéristiques, justification des choix de composants dans un circuit.</p></div>
+    <div class="info-card"><h4>VHDL — modules logiques</h4><p style="font-size:13px; color:var(--text2); line-height:1.7;">Conception de modules VHDL : compteurs, additionneurs, bascules. Écriture de testbenchs, génération de chronogrammes de simulation. Compréhension de la description comportementale vs structurelle.</p></div>
+    <div class="info-card"><h4>Montages électroniques en labo</h4><p style="font-size:13px; color:var(--text2); line-height:1.7;">Réalisation de montages sur platine d'essai et PCB. Câblage, vérification des connexions avant mise sous tension, respect des consignes de sécurité électrique, utilisation des EPI. Test et validation fonctionnelle des montages.</p></div>
+    <div class="info-card"><h4>Automatisme — TIA Portal & MPLAB</h4><p style="font-size:13px; color:var(--text2); line-height:1.7;">Réalisation de TP en automatisme avec le logiciel <strong>TIA Portal</strong> : création de Grafcet, langage Ladder, mise en place de séquences de commande pour des systèmes industriels. Utilisation de <strong>MPLAB</strong> pour la programmation en C de microcontrôleurs PIC, tests de simulation, débogage, et validation des échanges entre API et systèmes embarqués.</p></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     PPP
+══════════════════════════════════════════ -->
+<section id="ppp" class="reveal">
+  <div class="section-header">
+    <div class="section-eyebrow">05 — Projet Personnel et Professionnel</div>
+    <h2 class="section-title">Mon parcours <span>professionnel</span></h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="ppp-card">
+    <div class="ppp-left">
+      <h3>Parcours AII — Automatisme & Informatique Industrielle</h3>
+      <p>Je vise le parcours <strong style="color:var(--accent)">AII</strong> de l'IUT de Calais car il correspond exactement à mes centres d'intérêt : programmer des automates industriels, intégrer des systèmes de commande et de contrôle, travailler sur la robotique et la supervision HMI.</p>
+      <p>Ce parcours couvre l'automatisme spécialisé, les réseaux industriels, la robotique appliquée, la supervision et l'Interface Homme-Machine (IHM), l'informatique industrielle avancée et l'IoT industriel.</p>
+      <p>Je cherche une <strong>alternance</strong> pour BUT2 et BUT3 dans la région Hauts-de-France, idéalement dans une entreprise du secteur industriel ou automobile.</p>
+      <p>Dans le cadre du <strong>PPP</strong>, nous avons aussi réalisé plusieurs projets comme la création de <strong>posters</strong> et de <strong>newsletters</strong>. Ces activités m'ont appris à : <strong>résumer plusieurs jours de travail</strong> sur un support visuel clair, présenter un projet de façon synthétique, et <strong>planifier un programme</strong> pour atteindre un objectif précis en entreprise.</p>
+      <div class="img-grid-3" style="margin-top:1.25rem;">
+        <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3);"><div style="background:var(--bg); padding:10px 12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;"><span style="font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.06em;">📄 Poster AII — Automatisme & Informatique Industrielle</span><a href="assets/pdf/document_01.pdf" download="poster_AII_NGUEMBO.pdf" style="font-family:var(--mono); font-size:10px; color:var(--green); text-decoration:none; border:1px solid var(--green); padding:3px 8px; border-radius:4px;">⬇ Télécharger</a></div><iframe src="assets/pdf/document_01.pdf" style="width:100%; height:420px; border:none; display:block;" title="Poster AII — Automatisme & Informatique Industrielle"></iframe><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:7px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">Poster PPP réalisé en binôme (NGUEMBO & ELKHAOULANI) — présentation du parcours AII, missions et métiers du GEII</p></div>
+        <div style=<div style="border-radius:12px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3);"><div style="background:var(--bg); padding:10px 12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;"><span style="font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.06em;">📄 Newsletter SAÉ 2 — Volet roulant automatisé</span><a href="assets/pdf/document_03.pdf" download="newsletter_SAE2_NGUEMBO.pdf" style="font-family:var(--mono); font-size:10px; color:var(--green); text-decoration:none; border:1px solid var(--green); padding:3px 8px; border-radius:4px;">⬇ Télécharger</a></div><a href="assets/pdf/document_03.pdf" download="newsletter_SAE2_NGUEMBO.pdf" style="display:block;"><img src="assets/img/photo_12.jpg" alt="Aperçu newsletter SAÉ 2" style="width:100%; display:block; cursor:pointer;" title="Cliquer pour télécharger la newsletter complète (PDF)"></a><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:7px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">Newsletter NGUEMBO & ELKHAOULANI — automatisation d'un volet roulant contrôlé par la vitesse du vent · Cliquer l'image pour télécharger le PDF complet</p></div>
+        <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3);"><div style="background:var(--bg); padding:10px 12px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;"><span style="font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.06em;">📄 Carte mentale — Le monde professionnel du GEII</span><a href="assets/pdf/document_05.pdf" download="carte_mentale_monde_pro_NGUEMBO.pdf" style="font-family:var(--mono); font-size:10px; color:var(--green); text-decoration:none; border:1px solid var(--green); padding:3px 8px; border-radius:4px;">⬇ Télécharger</a></div><iframe src="assets/pdf/document_05.pdf" style="width:100%; height:420px; border:none; display:block;" title="Carte mentale — Le monde professionnel du GEII"></iframe><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:7px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">Carte mentale PPP — secteurs primaire, secondaire, tertiaire et métiers du GEII (activités, compétences, poursuites d'études)</p></div>
+      </div>
+      <ul class="metier-list">
+        <div style="font-family:var(--mono); font-size:11px; color:var(--text2); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem; margin-top:1rem;">Métiers visés</div>
+        <li>Automaticien / Roboticien industriel</li>
+        <li>Technicien en informatique industrielle</li>
+        <li>Intégrateur de systèmes automatisés</li>
+        <li>Technicien en supervision / HMI</li>
+        <li>Développeur systèmes embarqués</li>
+      </ul>
+    </div>
+    <div class="ppp-right">
+      <div style="font-family:var(--mono); font-size:11px; color:var(--text2); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.5rem;">Monde professionnel du GEII</div>
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+        <div class="secteur-card"><div class="secteur-icon">🏭</div><div class="secteur-name">Secteur Secondaire</div><div class="secteur-sub">Automobile, aéronautique, robotique, électronique industrielle — cœur de métier du GEII</div></div>
+        <div class="secteur-card"><div class="secteur-icon">⚡</div><div class="secteur-name">Énergie & Transition</div><div class="secteur-sub">Énergies renouvelables, smart grid, batteries, gestion de l'énergie électrique</div></div>
+        <div class="secteur-card"><div class="secteur-icon">🏙️</div><div class="secteur-name">Secteur Tertiaire</div><div class="secteur-sub">Smart building, IoT, télécommunications, maintenance hospitalière</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header" style="margin-top:3.5rem; margin-bottom:2rem;">
+    <h3 style="font-size:1.2rem; font-weight:600;">Entreprises ciblées — <span class="accent-text">Hauts-de-France</span></h3>
+  </div>
+  <div class="entreprise-grid">
+    <div class="entreprise-card"><div class="entreprise-ville">Valenciennes (59)</div><div class="entreprise-name">Toyota Motor Manufacturing France</div><div class="entreprise-secteur">Industrie automobile — Production Toyota Yaris hybride, chaînes automatisées</div></div>
+    <div class="entreprise-card"><div class="entreprise-ville">Douai (59)</div><div class="entreprise-name">Renault Electricity</div><div class="entreprise-secteur">Automobile électrique — Mégane E-Tech, Scenic E-Tech, montage automatisé</div></div>
+    <div class="entreprise-card"><div class="entreprise-ville">Dunkerque (59)</div><div class="entreprise-name">Verkor</div><div class="entreprise-secteur">Batteries / Transition énergétique — Gigafactory de batteries pour véhicules électriques</div></div>
+    <div class="entreprise-card"><div class="entreprise-ville">Béthune (62)</div><div class="entreprise-name">Française de Mécanique</div><div class="entreprise-secteur">Industrie automobile — Production de moteurs thermiques et électriques (ex-PSA/Stellantis)</div></div>
+    <div class="entreprise-card"><div class="entreprise-ville">Arras (62)</div><div class="entreprise-name">Teledyne Oldham Simtronics</div><div class="entreprise-secteur">Instrumentation / Sécurité industrielle — Détecteurs de gaz, capteurs ATEX</div></div>
+    <div class="entreprise-card"><div class="entreprise-ville">Amiens (80)</div><div class="entreprise-name">Mersen France Amiens</div><div class="entreprise-secteur">Équipements électriques industriels — Composants électriques et graphite</div></div>
+  </div>
+
+  <div class="section-header" style="margin-top:3.5rem; margin-bottom:2rem;">
+    <h3 style="font-size:1.2rem; font-weight:600;">Anglais technique — <span class="accent-text">niveau A2</span></h3>
+  </div>
+  <div class="info-card">
+    <h4>Vidéo en anglais sur la sécurité des API — Ressource Anglais S2</h4>
+    <p style="font-size:13px; color:var(--text2); line-height:1.8; margin-top:0.5rem;">Mon niveau d'anglais est <strong>niveau A2</strong>. Dans le cadre de la ressource Anglais du semestre 2, nous avons réalisé une <strong>vidéo en anglais</strong> portant sur la <strong>sécurité autour des API et des installations électriques</strong>. L'objectif était de rappeler qu'un technicien ne peut pas intervenir sur une zone où le courant est présent sans respecter les règles de sécurité : port des EPI (chaussures de sécurité, lunettes, gants), vérification de l'absence de tension, respect des procédures et balisage de la zone.</p>
+    <p style="font-size:13px; color:var(--text2); line-height:1.8;">Cette vidéo en anglais nous a permis de prendre conscience de la <strong>gravité des risques électriques</strong> autant en entreprise que dans les salles de travaux pratiques à l'IUT. Elle m'a aidé à développer un <strong>vocabulaire simple mais précis</strong> sur la sécurité (electrical safety, protective equipment, risk, voltage, circuit, lockout/tagout) et à m'exprimer à l'oral dans un contexte professionnel.</p>
+    <div style="margin-top:1rem;">
+    <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border2); background:#000; aspect-ratio:1/1; max-width:480px; margin:0 auto;"><video controls style="width:100%; height:100%; object-fit:contain; display:block;" preload="metadata"><source src="assets/video/video_03.mp4" type="video/mp4">Votre navigateur ne supporte pas la lecture vidéo.</video></div><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; margin-top:8px; line-height:1.5;">🎬 Safety around PLCs & electrical installations — vidéo réalisée en anglais (niveau A2) sur les règles de sécurité électrique et le port des EPI</p>
+    </div>
+    <div style="margin-top:1rem;">
+      <span class="tag teal">Sécurité des API</span>
+      <span class="tag teal" style="margin-left:0.5rem;">Vocabulaire professionnel</span>
+      <span class="tag teal" style="margin-left:0.5rem;">Niveau A2</span>
+      <span class="tag teal" style="margin-left:0.5rem;">Vidéo en anglais</span>
+    </div>
+    <div style="margin-top:1.5rem; background:var(--bg3); border:1px solid var(--border2); border-radius:12px; overflow:hidden;">
+      <div style="background:var(--bg); padding:10px 14px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px;">
+        <span style="font-size:18px;">🎙️</span>
+        <span style="font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.06em;">INTERVIEW EN ANGLAIS — TP3 NGUEMBO & BALHAK</span>
+      </div>
+      <div style="padding:1.25rem;">
+        <p style="font-size:13px; color:var(--text2); line-height:1.7; margin-bottom:1rem;">
+          Enregistrement de l'interview réalisée en anglais avec <strong style="color:var(--text)">BALHAK Jannate</strong> dans le cadre du TP3. 
+          Cet exercice oral m'a permis de pratiquer le vocabulaire technique en anglais (electrical safety, PLC, embedded systems) 
+          et de développer ma capacité à m'exprimer dans un contexte professionnel.
+        </p>
+        <audio controls style="width:100%; border-radius:8px;" preload="metadata">
+          <source src="assets/audio/audio_01.mp3" type="audio/mpeg">
+          Votre navigateur ne supporte pas la lecture audio.
+        </audio>
+        <p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; margin-top:8px;">
+          🎙️ Interview TP3 — NGUEMBO Geosie & BALHAK Jannate · Anglais technique niveau A2
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     BILAN
+══════════════════════════════════════════ -->
+<section id="bilan" class="reveal">
+  <div class="section-header">
+    <div class="section-eyebrow">06 — Autoévaluation & progression</div>
+    <h2 class="section-title">Bilan <span>réflexif</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="bilan-grid">
+    <div class="bilan-card">
+      <h4>Compétences acquises — BUT1</h4>
+      <div class="bilan-item">Programmation VHDL modulaire sur FPGA (Basys3 / Artix-7)</div>
+      <div class="bilan-item">Conception et fabrication d'une carte PCB (KiCad, gravure, soudure)</div>
+      <div class="bilan-item">Programmation C embarqué sur microcontrôleur PIC24F</div>
+      <div class="bilan-item">Traitement d'un signal analogique (CAN, pont diviseur, hystérésis)</div>
+      <div class="bilan-item">Utilisation des instruments de mesure (multimètre, oscilloscope)</div>
+      <div class="bilan-item">Loi d'Ohm, lois des mailles/nœuds, composants électroniques</div>
+      <div class="bilan-item">Méthodologie de projet : planning Gantt, dossier de conception, oral</div>
+      <div class="bilan-item">Travail en binôme, communication technique, répartition des tâches</div>
+    </div>
+    <div class="bilan-card amber">
+      <h4>Axes de progression — BUT2 & BUT3</h4>
+      <div class="bilan-item">Approfondir la synthèse VHDL et passer à des modules plus complexes</div>
+      <div class="bilan-item">Maîtriser la programmation des automates (TIA Portal, Ladder, ST)</div>
+      <div class="bilan-item">Développer les compétences en réseaux industriels (Modbus, Profibus)</div>
+      <div class="bilan-item">Approfondir Python pour l'automatisation et le traitement de données</div>
+      <div class="bilan-item">Renforcer les compétences en supervision HMI et SCADA</div>
+      <div class="bilan-item">Améliorer la documentation technique et la rédaction de rapports</div>
+      <div class="bilan-item">Découvrir l'IoT industriel et les technologies Industrie 4.0</div>
+      <div class="bilan-item">Mettre en pratique toutes ces compétences via l'alternance</div>
+    </div>
+  </div>
+  <div style="margin-top:2.5rem;">
+    <div class="img-grid-3">
+      <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_13.jpg" alt="Soudure de la carte PCB" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:7px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">① Soudure des composants sur la carte PCB — LEDs, résistances, buzzer et connecteurs</p></div>
+      <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_14.jpg" alt="Binôme Geosie & Romuald avec la carte PCB finale" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:7px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">② Binôme NGUEMBO & AGBATI — présentation de la carte PCB minuteur terminée</p></div>
+      <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border2); background:var(--bg3); aspect-ratio:1/1;"><img src="assets/img/photo_15.jpg" alt="Câblage et test de la maquette volet roulant" style="width:100%; height:100%; object-fit:cover; display:block;"><p style="font-size:11px; color:var(--text2); font-family:var(--mono); text-align:center; padding:7px 8px; background:var(--bg3); line-height:1.4; border-top:1px solid var(--border);">③ Câblage et dépannage de la maquette volet roulant au multimètre</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<div id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-eyebrow" style="font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.75rem;">07 — Contact</div>
+      <h2>Me contacter<br><span style="color:var(--accent)">pour une alternance</span></h2>
+      <p>Je suis disponible pour discuter d'une opportunité d'alternance BUT2 & BUT3 (2026–2028) dans les Hauts-de-France. N'hésitez pas à me contacter par email ou téléphone.</p>
+      <a class="contact-link" href="mailto:Geosie-dieurich.nguembo@etu.univ-littoral.fr">
+        <div class="contact-link-icon">✉️</div>
+        <div><div style="font-size:12px; color:var(--text2); margin-bottom:2px;">Email</div><div>Geosie-dieurich.nguembo@etu.univ-littoral.fr</div></div>
+      </a>
+      <a class="contact-link" href="tel:+33745385337">
+        <div class="contact-link-icon">📞</div>
+        <div><div style="font-size:12px; color:var(--text2); margin-bottom:2px;">Téléphone</div><div>+33 7 45 38 53 37</div></div>
+      </a>
+      <div class="contact-link">
+        <div class="contact-link-icon">📍</div>
+        <div><div style="font-size:12px; color:var(--text2); margin-bottom:2px;">Adresse</div><div>287 rue Duguay-Trouin, Calais 62100</div></div>
+      </div>
+      <div class="contact-link">
+        <div class="contact-link-icon">🎓</div>
+        <div><div style="font-size:12px; color:var(--text2); margin-bottom:2px;">Formation</div><div>IUT Littoral Côte d'Opale — BUT GEII 2025–2028</div></div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div style="font-family:var(--mono); font-size:11px; color:var(--text2); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.5rem;">Loisirs & Personnalité</div>
+      <div class="loisirs-grid">
+        <div class="loisir-card"><div class="loisir-icon">💪</div><div class="loisir-name">Musculation</div><div style="font-size:12px; color:var(--text2); margin-top:4px;">Rigueur et discipline</div></div>
+        <div class="loisir-card"><div class="loisir-icon">🥊</div><div class="loisir-name">Aïkido & Boxe</div><div style="font-size:12px; color:var(--text2); margin-top:4px;">Maîtrise de soi</div></div>
+        <div class="loisir-card"><div class="loisir-icon">⚽</div><div class="loisir-name">Football</div><div style="font-size:12px; color:var(--text2); margin-top:4px;">Esprit d'équipe</div></div>
+        <div class="loisir-card"><div class="loisir-icon">🎨</div><div class="loisir-name">Dessin & Peinture</div><div style="font-size:12px; color:var(--text2); margin-top:4px;">Créativité, précision</div></div>
+      </div>
+      <div style="margin-top:2rem; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.5rem;">
+        <div style="font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1rem;">Disponibilité</div>
+        <div style="font-size:14px; color:var(--text2); line-height:1.8;">Disponible pour une alternance à partir de <strong style="color:var(--text)">septembre 2026</strong> (BUT2). Mobilité dans les Hauts-de-France et région Calais / Boulogne / Dunkerque / Lille.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Portfolio de <span>Geosie Dieuriche NGUEMBO</span> — BUT GEII, IUT Littoral Côte d'Opale, Calais — Année 2025–2026
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  reveals.forEach(r => observer.observe(r));
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : ''; });
+  });
+</script>
+</body>
+</html>
